@@ -10,7 +10,6 @@ import { httpGet } from '../../lib/http.ts';
 import { useToast } from '../../hooks/use-toast.ts';
 import type { UserDocument } from '../../api/user.ts';
 import { NotificationIndicator } from './NotificationIndicator.tsx';
-import { OnboardingNudge } from '../OnboardingNudge.tsx';
 
 export type OnboardingConfig = Pick<
   UserDocument,
@@ -95,15 +94,6 @@ export function AccountDropdown() {
 
   return (
     <>
-      {shouldShowOnboardingStatus && !isOnboardingModalOpen && (
-        <OnboardingNudge
-          onStartOnboarding={() => {
-            loadOnboardingConfig().then(() => {
-              setIsOnboardingModalOpen(true);
-            });
-          }}
-        />
-      )}
 
       <div className="relative z-90 animate-fade-in">
         {isOnboardingModalOpen && onboardingConfig && (

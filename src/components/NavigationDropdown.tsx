@@ -7,6 +7,9 @@ import {
   Shirt,
   Video,
   Database,
+  ArrowDown,
+  ChevronDown,
+  Footprints,
 } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { cn } from '../lib/classname.ts';
@@ -19,10 +22,24 @@ import { useStore } from '@nanostores/react';
 
 const links = [
   {
-    link: '/courses/sql',
-    label: 'SQL Course',
-    description: 'Our premium SQL course',
-    Icon: Database,
+    link: '/get-started',
+    label: 'Get Started',
+    description: 'Some beginner friendly resources',
+    Icon: Footprints,
+    isHighlighted: false,
+  },
+  {
+    link: '/roadmaps',
+    label: 'Roadmaps',
+    description: 'Explore our curated roadmaps',
+    Icon: Menu,
+    isHighlighted: false,
+  },
+  {
+    link: '/courses',
+    label: 'Courses',
+    description: 'Learn with our interactive courses',
+    Icon: Shirt,
     isHighlighted: false,
     isNew: true,
   },
@@ -55,26 +72,11 @@ const links = [
     isHighlighted: false,
   },
   {
-    link: 'https://youtube.com/@roadmapsh',
+    link: '/videos',
     label: 'Videos',
     description: 'Animated and interactive content',
     Icon: Video,
     isExternal: true,
-    isHighlighted: false,
-  },
-  {
-    link: 'https://cottonbureau.com/people/roadmapsh',
-    label: 'Shop',
-    description: 'Get some cool swag',
-    Icon: Shirt,
-    isExternal: true,
-    isHighlighted: false,
-  },
-  {
-    link: '/advertise',
-    label: 'Advertise',
-    description: 'Promote your product or service',
-    Icon: Menu,
     isHighlighted: false,
   },
 ];
@@ -98,7 +100,7 @@ export function NavigationDropdown() {
   return (
     <div className="relative flex items-center" ref={dropdownRef}>
       <button
-        className={cn('text-gray-400 hover:text-white', {
+        className={cn('text-gray-400 hover:text-white flex justify-between items-center', {
           'text-white': $navigationDropdownOpen,
         })}
         onClick={() => navigationDropdownOpen.set(true)}
@@ -106,7 +108,7 @@ export function NavigationDropdown() {
         aria-label="Open Navigation Dropdown"
         aria-expanded={$navigationDropdownOpen}
       >
-        <Menu className="h-5 w-5" />
+      Explore <ChevronDown className="ml-1 h-4 w-4" />
       </button>
       <div
         className={cn(

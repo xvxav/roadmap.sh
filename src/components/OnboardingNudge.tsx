@@ -37,9 +37,6 @@ export function OnboardingNudge(props: OnboardingNudgeProps) {
     return null;
   }
 
-  // @TODO put it back once <CourseAnnouncement /> is removed
-  return null;
-
   return (
     <div
       className={cn(
